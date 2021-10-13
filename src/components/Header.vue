@@ -18,6 +18,7 @@
     <div class="h-[34px] w-[71px] border-white rounded-[2px]">
       <select class="bg-dark">
         <option selected>EN</option>
+        <option>繁體</option>
       </select>
     </div>
   </header>

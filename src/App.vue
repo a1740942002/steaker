@@ -1,7 +1,7 @@
 <template>
-  <div id="app" class="min-w-[320px]">
+  <div id="app" class="min-w-[320px] max-w-[1280px]">
     <Header />
-    <main class="absolute top-[73px] bottom-[62px]">
+    <main class="relative top-[73px] bottom-[62px]">
       <router-view />
     </main>
     <Footer />

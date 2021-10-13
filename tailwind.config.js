@@ -4,10 +4,16 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Helvetica', 'Arial', 'sans-serif'],
+      },
       colors: {
         dark: '#17171A',
         light: '#F5F7FA',
-        lightGrey: '#A0A0A0',
+        lightGrey: {
+          100: '#A0A0A0',
+          200: '#929292',
+        },
         darkBlue: '#171924',
       },
     },
