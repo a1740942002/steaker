@@ -2,7 +2,7 @@
   <div class="max-w-[1280px] overflow-x-auto">
     <table class="text-right text-[14px]">
       <thead>
-        <CoinHead />
+        <CoinHeader />
       </thead>
       <tbody>
         <CoinItem

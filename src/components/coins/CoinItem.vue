@@ -7,7 +7,7 @@
           <img :src="coin.image" class="object-fit" />
         </div>
         <div>
-          <p class="font-bold">{{ coin.id }}</p>
+          <p class="font-bold">{{ id }}</p>
           <span class="text-lightGrey-200 text-[12px]">{{ symbol }}</span>
         </div>
       </div>
@@ -52,6 +52,9 @@ export default {
     },
   },
   computed: {
+    id() {
+      return _.startCase(this.$props.coin.id);
+    },
     symbol() {
       return this.$props.coin.symbol.toUpperCase();
     },
