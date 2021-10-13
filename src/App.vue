@@ -1,7 +1,16 @@
 <template>
-  <div id="app" class="min-w-[320px] max-w-[1280px]">
+  <div id="app">
     <Header />
-    <main class="relative top-[73px] bottom-[62px]">
+    <main
+      class="
+        max-w-[1280px]
+        mx-auto
+        relative
+        top-[73px]
+        bottom-[62px]
+        overflow-y-auto
+      "
+    >
       <router-view />
     </main>
     <Footer />

@@ -1,8 +1,10 @@
 <template>
   <header
     class="
+      bg-dark
       fixed
       min-h-[73px]
+      z-10
       w-full
       flex
       justify-between
