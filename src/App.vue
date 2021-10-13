@@ -16,3 +16,10 @@
     <Footer />
   </div>
 </template>
+
+<style>
+/* width */
+::-webkit-scrollbar {
+  display: none;
+}
+</style>

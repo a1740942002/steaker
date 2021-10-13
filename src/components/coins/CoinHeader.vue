@@ -6,9 +6,9 @@
       >
     </th>
     <th @click="handleClick(1)" class="px-6 py-3 text-left cursor-pointer">
-      <div class="flex items-center relative">
+      <div class="flex items-center">
         Name
-        <div class="absolute left-9">
+        <div>
           <ArrowUp
             v-show="selectedHead.idx == 1 && selectedHead.sortStatus == 'DESC'"
             color="#fff"
