@@ -30,10 +30,11 @@
 <script>
 import { useI18n } from "vue-i18n";
 import { computed } from "vue";
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 import { useStore } from "vuex";
 export default {
   setup() {
+    const route = useRoute();
     const router = useRouter();
     const store = useStore();
     const { locale } = useI18n();
@@ -41,7 +42,10 @@ export default {
       return store.state.lang;
     });
     const handleSelect = (e) => {
-      router.push(`/${e.target.value}`);
+      router.push({
+        path: `/${e.target.value}`,
+        query: route.query,
+      });
     };
 
     return { locale, lang, handleSelect };

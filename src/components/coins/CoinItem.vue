@@ -1,5 +1,9 @@
 <template>
-  <tr class="font-normal" :class="idx % 2 == 1 && 'bg-darkBlue'">
+  <tr
+    v-if="!isCoinsLoading"
+    class="font-normal"
+    :class="idx % 2 == 1 && 'bg-darkBlue'"
+  >
     <td class="pl-[10px] pr-6 py-3">{{ coin.market_cap_rank }}</td>
     <td class="px-6 py-3 text-left">
       <div class="flex items-center min-w-[160px]">
@@ -37,11 +41,12 @@
     <td class="px-6 py-3 min-w-[150px]">${{ volume24h }}</td>
     <td class="px-6 py-3">chartdasdsadasdas</td>
   </tr>
+  <CoinsSkeleton v-else />
 </template>
 
 <script>
 import _ from "lodash";
-import { toRefs, computed } from "vue";
+import { toRefs, computed, inject } from "vue";
 
 export default {
   props: {
@@ -53,6 +58,7 @@ export default {
     },
   },
   setup(props) {
+    const isCoinsLoading = inject("isCoinsLoading");
     const { coin, idx } = toRefs(props);
     const name = computed(() => coin.value.name);
     const symbol = computed(() => coin.value.symbol.toUpperCase());
@@ -84,6 +90,7 @@ export default {
       priceChange7d,
       marketCap,
       volume24h,
+      isCoinsLoading,
     };
   },
 };

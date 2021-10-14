@@ -1,4 +1,4 @@
-import { ref, watchEffect, computed } from 'vue';
+import { ref, watchEffect, watch, computed } from 'vue';
 import { coinApi } from '@/apis/coinApi.js';
 import { useRoute } from 'vue-router';
 
@@ -7,6 +7,8 @@ export function useCoin() {
   const coinList = ref([]);
   const route = useRoute();
   const currentPage = ref(parseInt(route.query.page) || 1);
+  const isCoinsLoading = ref(false);
+  const isCoinListLoading = ref(false);
   const totalPage = computed(() => {
     return Math.ceil(coinList.value.length / 100);
   });
@@ -27,10 +29,12 @@ export function useCoin() {
 
   const fetchCoins = async ({ page }) => {
     try {
+      isCoinsLoading.value = true;
       const res = await coinApi.get(
         `coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=${page}&sparkline=false&price_change_percentage=7d`
       );
       coins.value = res.data;
+      isCoinsLoading.value = false;
     } catch (error) {
       return Promise.reject(error);
     }
@@ -38,8 +42,10 @@ export function useCoin() {
 
   const fetchCoinList = async () => {
     try {
+      isCoinListLoading.value = true;
       const res = await coinApi.get('coins/list');
       coinList.value = res.data;
+      isCoinListLoading.value = false;
     } catch (error) {
       return Promise.reject(error);
     }
@@ -90,11 +96,17 @@ export function useCoin() {
     }
   };
 
-  // 當 ?Page= 變動時，重新取得 coins
-  watchEffect(() => {
-    currentPage.value = parseInt(route.query.page) || 1;
-    fetchCoins({ page: route.query.page });
+  // 當 Route 中的 ?page 變動時，重新取得 coins
+  watch(
+    () => route.query.page,
+    () => {
+      currentPage.value = parseInt(route.query.page) || 1;
+      fetchCoins({ page: currentPage.value });
+    }
+  );
 
+  // 當 currentPage 變動時，改變 paginations
+  watchEffect(() => {
     // paginations 尾巴的狀況
     if (currentPage.value > totalPage.value - 4) {
       paginations.value = [
@@ -108,7 +120,7 @@ export function useCoin() {
       ];
     }
     // Pagination 中間的狀況
-    else if (currentPage.value > 5) {
+    else if (currentPage.value > 4) {
       paginations.value = [
         1,
         '...',
@@ -126,6 +138,8 @@ export function useCoin() {
   });
 
   return {
+    isCoinListLoading,
+    isCoinsLoading,
     paginations,
     selectedHeader,
     coins,

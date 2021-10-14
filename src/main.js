@@ -7,6 +7,7 @@ import App from './App.vue';
 import store from './store';
 import router from './router';
 import './tailwind.css';
+import 'nprogress/nprogress.css';
 
 const i18n = createI18n({
   locale: localStorage.getItem('lang') || 'en-us',

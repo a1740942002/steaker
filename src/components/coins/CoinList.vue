@@ -15,7 +15,8 @@
     </table>
   </div>
   <div class="pt-[60px]">
-    <CoinPaginations />
+    <CoinPaginations v-if="!isCoinListLoading" />
+    <CoinListSkeleton v-else />
   </div>
 </template>
 
@@ -26,7 +27,9 @@ export default {
   setup() {
     const coins = inject("coins");
     const currentPage = inject("currentPage");
-    return { coins, currentPage };
+    const isCoinsLoading = inject("isCoinsLoading");
+    const isCoinListLoading = inject("isCoinListLoading");
+    return { coins, currentPage, isCoinsLoading, isCoinListLoading };
   },
 };
 </script>

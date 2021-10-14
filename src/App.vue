@@ -18,8 +18,12 @@ export default {
 </script>
 
 <style>
-/* width */
+/* 消除 scrollbar */
 ::-webkit-scrollbar {
   display: none;
+}
+
+#nprogress .bar {
+  background: #ea3943 !important;
 }
 </style>

@@ -17,6 +17,8 @@ export default {
   setup() {
     const { t } = useI18n();
     const {
+      isCoinsLoading,
+      isCoinListLoading,
       selectedHeader,
       coins,
       fetchCoins,
@@ -29,6 +31,8 @@ export default {
       paginations,
     } = useCoin();
     provide("coins", coins);
+    provide("isCoinsLoading", isCoinsLoading);
+    provide("isCoinListLoading", isCoinListLoading);
     provide("currentPage", currentPage);
     provide("totalPage", totalPage);
     provide("isFirstPage", isFirstPage);
@@ -36,7 +40,7 @@ export default {
     provide("sortCoins", sortCoins);
     provide("selectedHeader", selectedHeader);
     provide("paginations", paginations);
-    fetchCoins({ perPage: 3 });
+    fetchCoins({ page: currentPage.value });
     fetchCoinList();
 
     return { coins, totalPage, t };
