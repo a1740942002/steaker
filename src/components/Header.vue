@@ -28,20 +28,22 @@
 
 <script>
 import { useI18n } from "vue-i18n";
+import { computed } from "vue";
+import { useRouter } from "vue-router";
+import { useStore } from "vuex";
 export default {
   setup() {
+    const router = useRouter();
+    const store = useStore();
     const { locale } = useI18n();
-    return { locale };
-  },
-  data() {
-    return {
-      lang: localStorage.getItem("lang") || "en-us",
+    const lang = computed(() => {
+      return store.state.lang;
+    });
+    const handleSelect = (e) => {
+      router.push(`/${e.target.value}`);
     };
-  },
-  methods: {
-    handleSelect(e) {
-      localStorage.setItem("lang", e.target.value);
-    },
+
+    return { locale, lang, handleSelect };
   },
 };
 </script>
