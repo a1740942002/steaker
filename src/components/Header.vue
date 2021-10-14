@@ -2,10 +2,11 @@
   <header
     class="
       bg-dark
-      fixed
       min-h-[73px]
-      z-10
       w-full
+      sticky
+      top-0
+      z-10
       flex
       justify-between
       items-center
@@ -17,7 +18,7 @@
     <router-link to="/" class="w-[125px] h-[21px]">
       <img src="../assets/steaker-logo.png" alt="" />
     </router-link>
-    <div class="h-[34px] w-[71px] border-white rounded-[2px]">
+    <div class="border-white rounded-[2px]">
       <select class="bg-dark" :value="lang" @change="handleSelect">
         <option selected value="en-us">EN</option>
         <option value="zh-tw">繁體</option>

@@ -1,6 +1,6 @@
 <template>
   <tr class="font-normal" :class="idx % 2 == 1 && 'bg-darkBlue'">
-    <td class="px-6 py-3">{{ coin.market_cap_rank }}</td>
+    <td class="pl-[10px] pr-6 py-3">{{ coin.market_cap_rank }}</td>
     <td class="px-6 py-3 text-left">
       <div class="flex items-center min-w-[160px]">
         <div class="w-[24px] h-[24px] rounded-full mr-[9px]">

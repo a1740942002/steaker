@@ -14,7 +14,7 @@
       </tbody>
     </table>
   </div>
-  <div class="my-5">
+  <div class="pt-[60px]">
     <CoinPaginations />
   </div>
 </template>
