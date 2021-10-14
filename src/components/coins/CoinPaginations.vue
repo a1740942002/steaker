@@ -7,7 +7,11 @@
     <ArrowLeft v-else :color="isFirstPage ? '#606266' : '#C0C4CC'" />
 
     <!-- Pagination -->
-    <router-link :to="{ query: { page } }" v-for="page in pages" :key="page">
+    <router-link
+      :to="{ query: { page } }"
+      v-for="page in totalPage"
+      :key="page"
+    >
       <CoinPagination
         :currentPage="currentPage"
         :isCurrentPage="page == currentPage"
@@ -24,25 +28,14 @@
 </template>
 
 <script>
+import { inject } from "vue";
 export default {
-  data() {
-    return {
-      pages: 8,
-    };
-  },
-  computed: {
-    currentPage() {
-      return parseInt(this.$route.query.page) || 1;
-    },
-    isFirstPage() {
-      if (!this.$route.query.hasOwnProperty("page")) {
-        return true;
-      }
-      return this.$route.query.page == 1;
-    },
-    isLastPage() {
-      return this.$route.query.page == this.pages;
-    },
+  setup() {
+    const totalPage = inject("totalPage");
+    const currentPage = inject("currentPage");
+    const isFirstPage = inject("isFirstPage");
+    const isLastPage = inject("isLastPage");
+    return { totalPage, currentPage, isFirstPage, isLastPage };
   },
 };
 </script>

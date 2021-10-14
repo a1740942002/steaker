@@ -8,17 +8,22 @@
 </template>
 
 <script>
+import { computed, inject, toRefs } from "vue";
 export default {
   props: {
     page: {
       type: Number,
     },
-    isCurrentPage: {
-      type: Boolean,
-    },
-    currentPage: {
-      type: Number,
-    },
+  },
+  setup(props) {
+    const { page } = toRefs(props);
+    const currentPage = inject("currentPage");
+    const isCurrentPage = computed(() => currentPage.value == page.value);
+    return {
+      isCurrentPage,
+      currentPage,
+      page,
+    };
   },
 };
 </script>

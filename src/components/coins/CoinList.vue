@@ -21,33 +21,12 @@
 
 
 <script>
-import { mapState } from "vuex";
 import { inject } from "vue";
 export default {
   setup() {
     const coins = inject("coins");
-
-    return { coins };
-  },
-  created() {
-    this.$store.dispatch("coin/fetchCoins", {
-      perPage: 3,
-      page: this.currentPage,
-    });
-  },
-  watch: {
-    $route() {
-      this.$store.dispatch("coin/fetchCoins", {
-        perPage: 3,
-        page: this.currentPage,
-      });
-    },
-  },
-  computed: {
-    ...mapState("coin", ["coins"]),
-    currentPage() {
-      return parseInt(this.$route.query.page) || 1;
-    },
+    const currentPage = inject("currentPage");
+    return { coins, currentPage };
   },
 };
 </script>

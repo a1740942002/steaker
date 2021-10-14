@@ -41,6 +41,7 @@
 
 <script>
 import _ from "lodash";
+import { toRefs, computed } from "vue";
 
 export default {
   props: {
@@ -51,37 +52,39 @@ export default {
       type: Number,
     },
   },
-  computed: {
-    id() {
-      return _.startCase(this.$props.coin.id);
-    },
-    symbol() {
-      return this.$props.coin.symbol.toUpperCase();
-    },
-    price() {
-      return this.$props.coin.current_price
-        .toString()
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    },
-    priceChange24h() {
-      return _.round(this.$props.coin.price_change_percentage_24h, 2);
-    },
-    priceChange7d() {
-      return _.round(
-        this.$props.coin.price_change_percentage_7d_in_currency,
-        2
-      );
-    },
-    marketCap() {
-      return this.$props.coin.market_cap
-        .toString()
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    },
-    volume24h() {
-      return this.$props.coin.market_cap_change_24h
+  setup(props) {
+    const { coin, idx } = toRefs(props);
+    const id = computed(() => _.startCase(coin.value.id));
+    const symbol = computed(() => coin.value.symbol.toUpperCase());
+    const price = computed(() =>
+      coin.value.current_price?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    );
+    const priceChange24h = computed(() =>
+      _.round(coin.value.price_change_percentage_24h, 2)
+    );
+
+    const priceChange7d = computed(() =>
+      _.round(coin.value.price_change_percentage_7d_in_currency, 2)
+    );
+    const marketCap = computed(() =>
+      coin.value.market_cap?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    );
+    const volume24h = computed(() =>
+      coin.value.market_cap_change_24h
         ?.toString()
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    },
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    );
+
+    return {
+      idx,
+      id,
+      symbol,
+      price,
+      priceChange24h,
+      priceChange7d,
+      marketCap,
+      volume24h,
+    };
   },
 };
 </script>

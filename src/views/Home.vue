@@ -14,10 +14,22 @@ import { provide } from "vue";
 
 export default {
   setup() {
-    const { coins } = useCoin();
+    const {
+      coins,
+      fetchCoins,
+      currentPage,
+      totalPage,
+      isFirstPage,
+      isLastPage,
+    } = useCoin();
     provide("coins", coins);
+    provide("currentPage", currentPage);
+    provide("totalPage", totalPage);
+    provide("isFirstPage", isFirstPage);
+    provide("isLastPage", isLastPage);
+    fetchCoins({ perPage: 3 });
 
-    return { coins };
+    return { coins, totalPage };
   },
 };
 </script>
