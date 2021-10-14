@@ -23,16 +23,16 @@
       <div class="h-2 rounded-full bg-lightGrey-100 min-w-[80px]"></div>
     </td>
     <td class="px-6 py-3">
-      <div class="h-2 rounded-full bg-lightGrey-100 min-w-[80px]"></div>
+      <div class="h-2 rounded-full bg-lightGrey-100 min-w-[100px]"></div>
     </td>
     <td class="px-6 py-3">
-      <div class="h-2 rounded-full bg-lightGrey-100 min-w-[80px]"></div>
+      <div class="h-2 rounded-full bg-lightGrey-100 min-w-[100px]"></div>
     </td>
     <td class="px-6 py-3">
-      <div class="h-2 rounded-full bg-lightGrey-100 min-w-[80px]"></div>
+      <div class="h-2 rounded-full bg-lightGrey-100 min-w-[160px]"></div>
     </td>
     <td class="px-6 py-3">
-      <div class="h-2 rounded-full bg-lightGrey-100 min-w-[80px]"></div>
+      <div class="h-2 rounded-full bg-lightGrey-100 min-w-[120px]"></div>
     </td>
   </tr>
 </template>

@@ -7,8 +7,8 @@ export function useCoin() {
   const coinList = ref([]);
   const route = useRoute();
   const currentPage = ref(parseInt(route.query.page) || 1);
-  const isCoinsLoading = ref(false);
-  const isCoinListLoading = ref(false);
+  const isCoinsLoading = ref(true);
+  const isCoinListLoading = ref(true);
   const totalPage = computed(() => {
     return Math.ceil(coinList.value.length / 100);
   });
