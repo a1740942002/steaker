@@ -79,7 +79,7 @@ export default {
     },
     volume24h() {
       return this.$props.coin.market_cap_change_24h
-        .toString()
+        ?.toString()
         .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     },
   },

@@ -1,20 +1,24 @@
 <template>
-  <nav class="space-x-[2px] text-[14px] flex justify-center items-center">
-    <ArrowLeft color="#606266" />
-    <router-link to="/" v-for="page in pages" :key="page">
-      <Pagination :isCurrentPage="page == currentPage" :page="page" />
-    </router-link>
-    <ArrowRight color="#C0C4CC" />
-  </nav>
+  <div
+    :class="isCurrentPage ? 'bg-blue text-white' : 'text-lightGrey-300'"
+    class="inline-block px-[12px] py-[6px] rounded-[2px]"
+  >
+    {{ page }}
+  </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      pages: 8,
-      currentPage: 1,
-    };
+  props: {
+    page: {
+      type: Number,
+    },
+    isCurrentPage: {
+      type: Boolean,
+    },
+    currentPage: {
+      type: Number,
+    },
   },
 };
 </script>

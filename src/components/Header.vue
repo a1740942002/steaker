@@ -14,9 +14,9 @@
       border-b-[1px] border-white
     "
   >
-    <div class="w-[125px] h-[21px]">
+    <router-link to="/" class="w-[125px] h-[21px]">
       <img src="../assets/steaker-logo.png" alt="" />
-    </div>
+    </router-link>
     <div class="h-[34px] w-[71px] border-white rounded-[2px]">
       <select class="bg-dark">
         <option selected>EN</option>
@@ -25,3 +25,4 @@
     </div>
   </header>
 </template>
+

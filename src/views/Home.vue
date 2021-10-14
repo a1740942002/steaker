@@ -6,3 +6,18 @@
     <CoinList />
   </div>
 </template>
+
+
+<script>
+import { useCoin } from "@/hooks/useCoin";
+import { provide } from "vue";
+
+export default {
+  setup() {
+    const { coins } = useCoin();
+    provide("coins", coins);
+
+    return { coins };
+  },
+};
+</script>
