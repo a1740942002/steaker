@@ -1,7 +1,16 @@
 <template>
-  <div
+  <router-link
+    v-if="page !== '...'"
+    :to="{ query: { page } }"
     :class="isCurrentPage ? 'bg-blue text-white' : 'text-lightGrey-300'"
     class="inline-block px-[12px] py-[6px] rounded-[2px]"
+  >
+    {{ page }}
+  </router-link>
+
+  <div
+    v-else
+    class="inline-block px-[12px] py-[6px] rounded-[2px] text-lightGrey-300"
   >
     {{ page }}
   </div>

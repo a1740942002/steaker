@@ -7,17 +7,13 @@
     <ArrowLeft v-else :color="isFirstPage ? '#606266' : '#C0C4CC'" />
 
     <!-- Pagination -->
-    <router-link
-      :to="{ query: { page } }"
-      v-for="page in paginations"
-      :key="page"
-    >
+    <div v-for="page in paginations" :key="page">
       <CoinPaginationItem
         :currentPage="currentPage"
         :isCurrentPage="page == currentPage"
         :page="page"
       />
-    </router-link>
+    </div>
 
     <!-- Next Page -->
     <router-link v-if="!isLastPage" :to="{ query: { page: currentPage + 1 } }">
