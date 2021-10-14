@@ -1,77 +1,84 @@
 <template>
   <tr>
-    <th @click="handleClick(0)" class="px-6 py-3 cursor-pointer">
-      <coin-header-title :selectedHead="selectedHead" :idx="0"
+    <th @click="sortCoins('market_cap_rank')" class="px-6 py-3 cursor-pointer">
+      <coin-header-title :selectedHeader="selectedHeader" name="market_cap_rank"
         >#</coin-header-title
       >
     </th>
-    <th @click="handleClick(1)" class="px-6 py-3 text-left cursor-pointer">
+    <th @click="sortCoins('name')" class="px-6 py-3 text-left cursor-pointer">
       <div class="flex items-center">
         Name
         <div>
           <ArrowUp
-            v-show="selectedHead.idx == 1 && selectedHead.sortStatus == 'DESC'"
+            v-show="
+              selectedHeader.name == 'name' && selectedHeader.method == 'DESC'
+            "
             color="#fff"
           />
           <ArrowDown
-            v-show="selectedHead.idx == 1 && selectedHead.sortStatus == 'ASC'"
+            v-show="
+              selectedHeader.name == 'name' && selectedHeader.method == 'ASC'
+            "
             color="#fff"
           />
         </div>
       </div>
     </th>
-    <th @click="handleClick(2)" class="px-6 py-3 cursor-pointer">
-      <coin-header-title :selectedHead="selectedHead" :idx="2"
+    <th @click="sortCoins('current_price')" class="px-6 py-3 cursor-pointer">
+      <coin-header-title :selectedHeader="selectedHeader" name="current_price"
         >Price</coin-header-title
       >
     </th>
-    <th @click="handleClick(3)" class="px-6 py-3 cursor-pointer">
-      <coin-header-title :selectedHead="selectedHead" :idx="3"
+    <th
+      @click="sortCoins('price_change_percentage_24h')"
+      class="px-6 py-3 cursor-pointer"
+    >
+      <coin-header-title
+        :selectedHeader="selectedHeader"
+        name="price_change_percentage_24h"
         >24h%</coin-header-title
       >
     </th>
-    <th @click="handleClick(4)" class="px-6 py-3 cursor-pointer">
-      <coin-header-title :selectedHead="selectedHead" :idx="4"
+    <th
+      @click="sortCoins('price_change_percentage_7d_in_currency')"
+      class="px-6 py-3 cursor-pointer"
+    >
+      <coin-header-title
+        :selectedHeader="selectedHeader"
+        name="price_change_percentage_7d_in_currency"
         >7d%</coin-header-title
       >
     </th>
-    <th @click="handleClick(5)" class="px-6 py-3 cursor-pointer">
-      <coin-header-title :selectedHead="selectedHead" :idx="5">
+    <th @click="sortCoins('market_cap')" class="px-6 py-3 cursor-pointer">
+      <coin-header-title :selectedHeader="selectedHeader" name="market_cap">
         Market Cap</coin-header-title
       >
     </th>
-    <th @click="handleClick(6)" class="px-6 py-3 cursor-pointer">
-      <coin-header-title :selectedHead="selectedHead" :idx="6">
+    <th
+      @click="sortCoins('market_cap_change_24h')"
+      class="px-6 py-3 cursor-pointer"
+    >
+      <coin-header-title
+        :selectedHeader="selectedHeader"
+        name="market_cap_change_24h"
+      >
         Volume(24h)</coin-header-title
       >
     </th>
-    <th @click="handleClick(7)" class="px-6 py-3">Last 7 Days</th>
+    <th class="px-6 py-3">Last 7 Days</th>
   </tr>
 </template>
 
 <script>
 import CoinHeaderTitle from "./CoinHeaderTitle.vue";
+import { inject } from "vue";
 export default {
   components: { CoinHeaderTitle },
-  data() {
-    return {
-      selectedHead: {
-        idx: 5,
-        sortStatus: "DESC",
-      },
-    };
-  },
-  methods: {
-    handleClick(idx) {
-      this.selectedHead.idx = idx;
-      if (!this.selectedHead.sortStatus) {
-        this.selectedHead.sortStatus = "DESC";
-      } else if (this.selectedHead.sortStatus == "DESC") {
-        this.selectedHead.sortStatus = "ASC";
-      } else if (this.selectedHead.sortStatus == "ASC") {
-        this.selectedHead.sortStatus = "DESC";
-      }
-    },
+  setup() {
+    const sortCoins = inject("sortCoins");
+    const selectedHeader = inject("selectedHeader");
+
+    return { sortCoins, selectedHeader };
   },
 };
 </script>

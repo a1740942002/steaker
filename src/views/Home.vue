@@ -15,18 +15,22 @@ import { provide } from "vue";
 export default {
   setup() {
     const {
+      selectedHeader,
       coins,
       fetchCoins,
       currentPage,
       totalPage,
       isFirstPage,
       isLastPage,
+      sortCoins,
     } = useCoin();
     provide("coins", coins);
     provide("currentPage", currentPage);
     provide("totalPage", totalPage);
     provide("isFirstPage", isFirstPage);
     provide("isLastPage", isLastPage);
+    provide("sortCoins", sortCoins);
+    provide("selectedHeader", selectedHeader);
     fetchCoins({ perPage: 3 });
 
     return { coins, totalPage };

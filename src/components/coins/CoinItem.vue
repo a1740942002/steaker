@@ -7,7 +7,7 @@
           <img :src="coin.image" class="object-fit" />
         </div>
         <div>
-          <p class="font-bold">{{ id }}</p>
+          <p class="font-bold">{{ name }}</p>
           <span class="text-lightGrey-200 text-[12px]">{{ symbol }}</span>
         </div>
       </div>
@@ -54,7 +54,7 @@ export default {
   },
   setup(props) {
     const { coin, idx } = toRefs(props);
-    const id = computed(() => _.startCase(coin.value.id));
+    const name = computed(() => coin.value.name);
     const symbol = computed(() => coin.value.symbol.toUpperCase());
     const price = computed(() =>
       coin.value.current_price?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
@@ -77,7 +77,7 @@ export default {
 
     return {
       idx,
-      id,
+      name,
       symbol,
       price,
       priceChange24h,

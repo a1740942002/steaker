@@ -3,11 +3,11 @@
     <p><slot></slot></p>
     <div class="absolute -right-5">
       <ArrowUp
-        v-show="selectedHead.idx == idx && selectedHead.sortStatus == 'ASC'"
+        v-show="selectedHeader.name == name && selectedHeader.method == 'ASC'"
         color="#fff"
       />
       <ArrowDown
-        v-show="selectedHead.idx == idx && selectedHead.sortStatus == 'DESC'"
+        v-show="selectedHeader.name == name && selectedHeader.method == 'DESC'"
         color="#fff"
       />
     </div>
@@ -16,11 +16,11 @@
 <script>
 export default {
   props: {
-    selectedHead: {
+    selectedHeader: {
       type: Object,
     },
-    idx: {
-      type: Number,
+    name: {
+      type: String,
     },
   },
 };
