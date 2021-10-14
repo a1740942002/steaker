@@ -6,7 +6,8 @@ export function useCoin() {
   const coins = ref([]);
   const route = useRoute();
   const currentPage = ref(parseInt(route.query.page) || 1);
-  const totalPage = ref(8);
+  const totalPage = ref(70);
+  const paginations = ref([1, 2, 3, 4, 5, '...', totalPage.value]);
   const selectedHeader = ref({
     name: 'market_cap',
     method: 'DESC',
@@ -79,11 +80,41 @@ export function useCoin() {
 
   // 當 ?Page= 變動時，重新取得 coins
   watchEffect(() => {
-    currentPage.value = parseInt(route.query.page);
+    currentPage.value = parseInt(route.query.page) || 1;
     fetchCoins({ page: route.query.page });
+
+    // paginations 尾巴的狀況
+    if (currentPage.value > 65) {
+      paginations.value = [
+        1,
+        '...',
+        totalPage.value - 4,
+        totalPage.value - 3,
+        totalPage.value - 2,
+        totalPage.value - 1,
+        totalPage.value,
+      ];
+    }
+    // Pagination 中間的狀況
+    else if (currentPage.value > 5) {
+      paginations.value = [
+        1,
+        '...',
+        currentPage.value - 1,
+        currentPage.value,
+        currentPage.value + 1,
+        '...',
+        totalPage.value,
+      ];
+    }
+    // Pagination 起始的狀況
+    else if (currentPage.value < 5) {
+      paginations.value = [1, 2, 3, 4, 5, '...', totalPage.value];
+    }
   });
 
   return {
+    paginations,
     selectedHeader,
     coins,
     fetchCoins,

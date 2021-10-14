@@ -10,15 +10,12 @@
 <script>
 import { computed, inject, toRefs } from "vue";
 export default {
-  props: {
-    page: {
-      type: Number,
-    },
-  },
+  props: ["page"],
   setup(props) {
     const { page } = toRefs(props);
     const currentPage = inject("currentPage");
     const isCurrentPage = computed(() => currentPage.value == page.value);
+
     return {
       isCurrentPage,
       currentPage,

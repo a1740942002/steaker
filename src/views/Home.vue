@@ -23,6 +23,7 @@ export default {
       isFirstPage,
       isLastPage,
       sortCoins,
+      paginations,
     } = useCoin();
     provide("coins", coins);
     provide("currentPage", currentPage);
@@ -31,6 +32,7 @@ export default {
     provide("isLastPage", isLastPage);
     provide("sortCoins", sortCoins);
     provide("selectedHeader", selectedHeader);
+    provide("paginations", paginations);
     fetchCoins({ perPage: 3 });
 
     return { coins, totalPage };

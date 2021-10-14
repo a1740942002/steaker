@@ -9,10 +9,10 @@
     <!-- Pagination -->
     <router-link
       :to="{ query: { page } }"
-      v-for="page in totalPage"
+      v-for="page in paginations"
       :key="page"
     >
-      <CoinPagination
+      <CoinPaginationItem
         :currentPage="currentPage"
         :isCurrentPage="page == currentPage"
         :page="page"
@@ -35,7 +35,8 @@ export default {
     const currentPage = inject("currentPage");
     const isFirstPage = inject("isFirstPage");
     const isLastPage = inject("isLastPage");
-    return { totalPage, currentPage, isFirstPage, isLastPage };
+    const paginations = inject("paginations");
+    return { totalPage, currentPage, isFirstPage, isLastPage, paginations };
   },
 };
 </script>
