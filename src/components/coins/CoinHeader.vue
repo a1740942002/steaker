@@ -7,7 +7,7 @@
     </th>
     <th @click="sortCoins('name')" class="px-6 py-3 text-left cursor-pointer">
       <div class="flex items-center">
-        Name
+        {{ t("name") }}
         <div>
           <ArrowUp
             v-show="
@@ -25,8 +25,10 @@
       </div>
     </th>
     <th @click="sortCoins('current_price')" class="px-6 py-3 cursor-pointer">
-      <coin-header-title :selectedHeader="selectedHeader" name="current_price"
-        >Price</coin-header-title
+      <coin-header-title
+        :selectedHeader="selectedHeader"
+        name="current_price"
+        >{{ t("current_price") }}</coin-header-title
       >
     </th>
     <th
@@ -36,7 +38,7 @@
       <coin-header-title
         :selectedHeader="selectedHeader"
         name="price_change_percentage_24h"
-        >24h%</coin-header-title
+        >{{ t("price_change_percentage_24h") }}</coin-header-title
       >
     </th>
     <th
@@ -46,12 +48,12 @@
       <coin-header-title
         :selectedHeader="selectedHeader"
         name="price_change_percentage_7d_in_currency"
-        >7d%</coin-header-title
+        >{{ t("price_change_percentage_7d_in_currency") }}</coin-header-title
       >
     </th>
     <th @click="sortCoins('market_cap')" class="px-6 py-3 cursor-pointer">
       <coin-header-title :selectedHeader="selectedHeader" name="market_cap">
-        Market Cap</coin-header-title
+        {{ t("market_cap") }}</coin-header-title
       >
     </th>
     <th
@@ -62,14 +64,15 @@
         :selectedHeader="selectedHeader"
         name="market_cap_change_24h"
       >
-        Volume(24h)</coin-header-title
+        {{ t("market_cap_change_24h") }}</coin-header-title
       >
     </th>
-    <th class="px-6 py-3">Last 7 Days</th>
+    <th class="px-6 py-3">{{ t("last_7_days") }}</th>
   </tr>
 </template>
 
 <script>
+import { useI18n } from "vue-i18n";
 import CoinHeaderTitle from "./CoinHeaderTitle.vue";
 import { inject } from "vue";
 export default {
@@ -77,8 +80,9 @@ export default {
   setup() {
     const sortCoins = inject("sortCoins");
     const selectedHeader = inject("selectedHeader");
+    const { t } = useI18n();
 
-    return { sortCoins, selectedHeader };
+    return { sortCoins, selectedHeader, t };
   },
 };
 </script>

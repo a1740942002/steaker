@@ -4,9 +4,12 @@ import { useRoute } from 'vue-router';
 
 export function useCoin() {
   const coins = ref([]);
+  const coinList = ref([]);
   const route = useRoute();
   const currentPage = ref(parseInt(route.query.page) || 1);
-  const totalPage = ref(70);
+  const totalPage = computed(() => {
+    return Math.ceil(coinList.value.length / 100);
+  });
   const paginations = ref([1, 2, 3, 4, 5, '...', totalPage.value]);
   const selectedHeader = ref({
     name: 'market_cap',
@@ -25,9 +28,18 @@ export function useCoin() {
   const fetchCoins = async ({ page }) => {
     try {
       const res = await coinApi.get(
-        `coins/markets?vs_currency=usd&order=market_cap_desc&per_page=3&page=${page}&sparkline=false&price_change_percentage=7d`
+        `coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=${page}&sparkline=false&price_change_percentage=7d`
       );
       coins.value = res.data;
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  };
+
+  const fetchCoinList = async () => {
+    try {
+      const res = await coinApi.get('coins/list');
+      coinList.value = res.data;
     } catch (error) {
       return Promise.reject(error);
     }
@@ -117,7 +129,9 @@ export function useCoin() {
     paginations,
     selectedHeader,
     coins,
+    coinList,
     fetchCoins,
+    fetchCoinList,
     sortCoins,
     currentPage,
     totalPage,

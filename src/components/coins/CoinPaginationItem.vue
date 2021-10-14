@@ -3,7 +3,7 @@
     v-if="page !== '...'"
     :to="{ query: { page } }"
     :class="isCurrentPage ? 'bg-blue text-white' : 'text-lightGrey-300'"
-    class="inline-block px-[12px] py-[6px] rounded-[2px]"
+    class="inline-block px-[10px] py-[4px] rounded-[2px]"
   >
     {{ page }}
   </router-link>

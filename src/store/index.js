@@ -1,11 +1,10 @@
 import { createStore } from 'vuex';
-import * as coin from '@/store/modules/coin';
 
 export default createStore({
-  state: {},
+  state: {
+    currentLanguage: 'en',
+  },
   mutations: {},
   actions: {},
-  modules: {
-    coin,
-  },
+  modules: {},
 });

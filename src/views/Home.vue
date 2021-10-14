@@ -1,7 +1,7 @@
 <template>
   <div class="px-[16px] pt-[37px] pb-[92px]">
     <h1 class="text-[20px] font-bold mb-[40px]">
-      Cryptocurrency Prices by Market Cap
+      {{ t("heading") }}
     </h1>
     <CoinList />
   </div>
@@ -10,14 +10,17 @@
 
 <script>
 import { useCoin } from "@/hooks/useCoin";
+import { useI18n } from "vue-i18n";
 import { provide } from "vue";
 
 export default {
   setup() {
+    const { t } = useI18n();
     const {
       selectedHeader,
       coins,
       fetchCoins,
+      fetchCoinList,
       currentPage,
       totalPage,
       isFirstPage,
@@ -34,8 +37,9 @@ export default {
     provide("selectedHeader", selectedHeader);
     provide("paginations", paginations);
     fetchCoins({ perPage: 3 });
+    fetchCoinList();
 
-    return { coins, totalPage };
+    return { coins, totalPage, t };
   },
 };
 </script>

@@ -17,7 +17,7 @@
       class="px-6 py-3"
       :class="priceChange24h > 0 ? 'text-green' : 'text-red'"
     >
-      <div class="flex items-center">
+      <div class="flex items-center justify-end">
         <ArrowUp v-if="priceChange24h > 0" color="#16C784" />
         <ArrowDown v-else color="#EA3943" />
         {{ priceChange24h < 0 ? -priceChange24h : priceChange24h }}%
@@ -27,14 +27,14 @@
       class="px-6 py-3"
       :class="priceChange7d > 0 ? 'text-green' : 'text-red'"
     >
-      <div class="flex items-center">
+      <div class="flex items-center justify-end">
         <ArrowUp v-if="priceChange7d > 0" color="#16C784" />
         <ArrowDown v-else color="#EA3943" />
         {{ priceChange7d < 0 ? -priceChange7d : priceChange7d }}%
       </div>
     </td>
     <td class="px-6 py-3">${{ marketCap }}</td>
-    <td class="px-6 py-3">${{ volume24h }}</td>
+    <td class="px-6 py-3 min-w-[150px]">${{ volume24h }}</td>
     <td class="px-6 py-3">chartdasdsadasdas</td>
   </tr>
 </template>

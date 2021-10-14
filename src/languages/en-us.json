@@ -1,0 +1,10 @@
+{
+  "heading": "Cryptocurrency Prices by Market Cap",
+  "name": "Name",
+  "current_price": "Price",
+  "price_change_percentage_24h": "24h%",
+  "price_change_percentage_7d_in_currency": "7d%",
+  "market_cap": "Market Cap",
+  "market_cap_change_24h": "Volume(24h)",
+  "last_7_days": "Last 7 Days"
+}
