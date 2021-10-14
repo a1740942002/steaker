@@ -8,6 +8,7 @@ module.exports = {
         sans: ['Helvetica', 'Arial', 'sans-serif'],
       },
       colors: {
+        blue: '#6188FF ',
         red: '#EA3943 ',
         green: '#16C784',
         dark: '#17171A',
@@ -15,6 +16,7 @@ module.exports = {
         lightGrey: {
           100: '#A0A0A0',
           200: '#929292',
+          300: '#606266',
         },
         darkBlue: '#171924',
       },

@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-[1280px] overflow-x-auto">
+  <div class="max-w-[1280px] overflow-x-auto flex flex-col">
     <table class="text-right text-[14px]">
       <thead>
         <CoinHeader />
@@ -13,6 +13,9 @@
         />
       </tbody>
     </table>
+    <div class="my-5">
+      <CoinPagination />
+    </div>
   </div>
 </template>
 
