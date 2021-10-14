@@ -9,7 +9,7 @@ import router from './router';
 import './tailwind.css';
 
 const i18n = createI18n({
-  locale: 'en-us',
+  locale: localStorage.getItem('lang') || 'en-us',
   fallbackLocale: 'en-us',
   messages: {
     'zh-tw': zhTw,
@@ -17,4 +17,5 @@ const i18n = createI18n({
   },
 });
 
-createApp(App).use(store).use(router).use(i18n).mount('#app');
+const app = createApp(App).use(store).use(router).use(i18n);
+app.mount('#app');

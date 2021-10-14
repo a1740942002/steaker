@@ -17,6 +17,14 @@
   </div>
 </template>
 
+<script>
+export default {
+  created() {
+    this.$store.dispatch("temp", this);
+  },
+};
+</script>
+
 <style>
 /* width */
 ::-webkit-scrollbar {

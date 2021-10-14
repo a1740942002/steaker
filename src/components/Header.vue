@@ -18,7 +18,7 @@
       <img src="../assets/steaker-logo.png" alt="" />
     </router-link>
     <div class="h-[34px] w-[71px] border-white rounded-[2px]">
-      <select class="bg-dark" v-model="locale">
+      <select class="bg-dark" :value="lang" @change="handleSelect">
         <option selected value="en-us">EN</option>
         <option value="zh-tw">繁體</option>
       </select>
@@ -32,6 +32,16 @@ export default {
   setup() {
     const { locale } = useI18n();
     return { locale };
+  },
+  data() {
+    return {
+      lang: localStorage.getItem("lang") || "en-us",
+    };
+  },
+  methods: {
+    handleSelect(e) {
+      localStorage.setItem("lang", e.target.value);
+    },
   },
 };
 </script>

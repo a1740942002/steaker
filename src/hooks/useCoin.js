@@ -96,7 +96,7 @@ export function useCoin() {
     fetchCoins({ page: route.query.page });
 
     // paginations 尾巴的狀況
-    if (currentPage.value > 65) {
+    if (currentPage.value > totalPage.value - 4) {
       paginations.value = [
         1,
         '...',

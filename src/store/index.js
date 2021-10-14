@@ -2,9 +2,13 @@ import { createStore } from 'vuex';
 
 export default createStore({
   state: {
-    currentLanguage: 'en',
+    currentLanguage: localStorage.getItem('lang'),
   },
   mutations: {},
-  actions: {},
+  actions: {
+    temp(context, payload) {
+      payload.$i18n.locale;
+    },
+  },
   modules: {},
 });
