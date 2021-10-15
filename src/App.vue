@@ -30,7 +30,6 @@ export default {
     return {
       x: null,
       y: null,
-      isShowBackTop: true,
     };
   },
   computed: {
@@ -73,7 +72,7 @@ export default {
 .n-back-top {
   background-color: #171924 !important;
 }
-.n-base-icon {
+.n-back-top .n-base-icon {
   color: #fff !important;
 }
 .n-base-icon:hover {

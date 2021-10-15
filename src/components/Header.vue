@@ -12,44 +12,17 @@
       items-center
       px-[16px]
       py-[26px]
+      sm:py-[20px]
+      sm:px-[53px]
       border-b-[1px] border-white
     "
   >
-    <router-link to="/" class="w-[125px] h-[21px]">
-      <img src="../assets/steaker-logo.png" alt="" />
+    <router-link to="/">
+      <div class="block max-w-[125px] sm:min-w-[184px]">
+        <img class="object-fit" src="../assets/steaker-logo.png" alt="" />
+      </div>
     </router-link>
-    <div class="border-white border-[1px] rounded-[2px]">
-      <select class="bg-dark" :value="lang" @change="handleSelect">
-        <option selected value="en-US">EN</option>
-        <option value="zh-TW">繁體</option>
-      </select>
-    </div>
+    <!-- <Switcher /> -->
+    <LangSwitcher />
   </header>
 </template>
-
-<script>
-import { useI18n } from "vue-i18n";
-import { computed } from "vue";
-import { useRouter, useRoute } from "vue-router";
-import { useStore } from "vuex";
-export default {
-  setup() {
-    const route = useRoute();
-    const router = useRouter();
-    const store = useStore();
-    const { locale } = useI18n();
-    const lang = computed(() => {
-      return store.state.lang;
-    });
-    const handleSelect = (e) => {
-      router.push({
-        path: `/${e.target.value}`,
-        query: route.query,
-      });
-    };
-
-    return { locale, lang, handleSelect };
-  },
-};
-</script>
-
