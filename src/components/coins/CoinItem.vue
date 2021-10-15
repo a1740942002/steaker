@@ -39,7 +39,9 @@
     </td>
     <td class="px-6 py-3">${{ marketCap }}</td>
     <td class="px-6 py-3 min-w-[150px]">${{ volume24h }}</td>
-    <td class="px-6 py-3">chartdasdsadasdas</td>
+    <td class="px-6 py-3">
+      <CoinChart :sparkline_in_7d="coin.sparkline_in_7d.price" :name="name" />
+    </td>
   </tr>
   <CoinsSkeleton v-else />
 </template>

@@ -31,7 +31,7 @@ export function useCoin() {
     try {
       isCoinsLoading.value = true;
       const res = await coinApi.get(
-        `coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=${page}&sparkline=false&price_change_percentage=7d`
+        `coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=${page}&sparkline=true&price_change_percentage=7d`
       );
       coins.value = res.data;
       isCoinsLoading.value = false;
