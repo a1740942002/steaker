@@ -6,7 +6,7 @@
   >
     <td class="sticky sm:static left-0 bg-dark pl-[10px] pr-6 py-3">
       <div class="min-w-[24px]">
-        {{ coin.market_cap_rank }}
+        {{ coin.market_cap_rank || "#" }}
       </div>
     </td>
     <td

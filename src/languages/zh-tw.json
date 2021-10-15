@@ -1,5 +1,5 @@
 {
-  "heading": "總市值前 100 名的貨幣",
+  "heading": "總市值前 {count} 名的貨幣",
   "name": "貨幣",
   "current_price": "匯率",
   "price_change_percentage_24h": "24小時",

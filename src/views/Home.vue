@@ -1,7 +1,7 @@
 <template>
   <div class="px-[16px] pt-[37px] pb-[92px]">
     <h1 class="text-[20px] font-bold mb-[40px]">
-      {{ t("heading") }}
+      {{ t("heading", { count: coins.length * currentPage }) }}
     </h1>
     <CoinList />
   </div>
@@ -50,7 +50,7 @@ export default {
       notification.error({ content: t("network_error"), duration: 5000 });
     });
 
-    return { coins, totalPage, t };
+    return { coins, totalPage, t, currentPage };
   },
 };
 </script>
