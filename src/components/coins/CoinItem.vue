@@ -78,22 +78,30 @@ export default {
     const { coin, idx } = toRefs(props);
     const name = computed(() => coin.value.name);
     const symbol = computed(() => coin.value.symbol.toUpperCase());
-    const price = computed(() =>
-      coin.value.current_price?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-    );
+    const price = computed(() => {
+      // 高於 1000 的，變成整數並使用 "," 千分位
+      if (coin.value.current_price > 1000) {
+        return parseInt(coin.value.current_price)
+          .toString()
+          .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
+      return coin.value?.current_price.toString();
+    });
     const priceChange24h = computed(() =>
-      _.round(coin.value.price_change_percentage_24h, 2)
+      _.round(coin.value?.price_change_percentage_24h, 2)
     );
 
     const priceChange7d = computed(() =>
-      _.round(coin.value.price_change_percentage_7d_in_currency, 2)
+      _.round(coin.value?.price_change_percentage_7d_in_currency, 2)
     );
     const marketCap = computed(() =>
-      coin.value.market_cap?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      parseInt(coin.value?.market_cap)
+        .toString()
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
     );
     const volume24h = computed(() =>
-      coin.value.market_cap_change_24h
-        ?.toString()
+      parseInt(coin.value?.market_cap_change_24h)
+        .toString()
         .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
     );
 
