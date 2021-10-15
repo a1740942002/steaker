@@ -2,6 +2,7 @@
   <div class="relative">
     <div
       class="
+        relative
         border-white border-[1px]
         rounded-[2px]
         bg-dark
@@ -14,8 +15,8 @@
       "
       @click="onClickCurrentLang"
     >
-      <span class="ml-3 mr-1">{{ currentLang.label }}</span>
-      <div>
+      <span class="ml-3">{{ currentLang.label }}</span>
+      <div class="absolute right-1">
         <ArrowDown color="#fff" />
       </div>
     </div>
@@ -40,10 +41,7 @@
         "
         @click="onClickNotCurrentLang(notCurrentLang.lang)"
       >
-        <span class="ml-3 mr-2">{{ notCurrentLang.label }}</span>
-        <div class="opacity-0">
-          <ArrowDown color="#fff" />
-        </div>
+        <span class="ml-3">{{ notCurrentLang.label }}</span>
       </div>
     </div>
   </div>
@@ -51,34 +49,33 @@
 
 <script>
 import store from "@/store";
-import { ref, computed, watch } from "vue";
+import { ref, watch } from "vue";
 import { useRouter, useRoute } from "vue-router";
+
+const languages = [
+  {
+    label: "EN",
+    lang: "en-US",
+  },
+  {
+    label: "繁體",
+    lang: "zh-TW",
+  },
+];
 
 export default {
   setup() {
     const router = useRouter();
     const route = useRoute();
     const isShowDropDown = ref(false);
-    const languages = ref([
-      {
-        label: "EN",
-        lang: "en-US",
-        isCurrentLang: store.state.lang == "en-US",
-      },
-      {
-        label: "繁體",
-        lang: "zh-TW",
-        isCurrentLang: store.state.lang == "zh-TW",
-      },
-    ]);
 
-    const currentLang = computed(() => {
-      return languages.value.find((language) => language.isCurrentLang);
-    });
+    const currentLang = ref(
+      languages.find((language) => store.state.lang == language.lang)
+    );
 
-    const notCurrentLangs = computed(() => {
-      return languages.value.filter((language) => !language.isCurrentLang);
-    });
+    const notCurrentLangs = ref(
+      languages.filter((language) => store.state.lang !== language.lang)
+    );
 
     const onClickCurrentLang = () => {
       isShowDropDown.value = !isShowDropDown.value;
@@ -95,7 +92,12 @@ export default {
     watch(
       () => store.state.lang,
       () => {
-        console.log(123);
+        currentLang.value = languages.find(
+          (language) => store.state.lang == language.lang
+        );
+        notCurrentLangs.value = languages.filter(
+          (language) => store.state.lang !== language.lang
+        );
       }
     );
 

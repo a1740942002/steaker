@@ -19,7 +19,6 @@
   </select>
 </template>
 <script>
-import { useI18n } from "vue-i18n";
 import { computed } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import { useStore } from "vuex";

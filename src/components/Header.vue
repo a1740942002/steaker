@@ -22,7 +22,6 @@
         <img class="object-fit" src="../assets/steaker-logo.png" alt="" />
       </div>
     </router-link>
-    <!-- <Switcher /> -->
-    <LangSwitcher />
+    <Switcher />
   </header>
 </template>
