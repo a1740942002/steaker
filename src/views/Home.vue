@@ -1,7 +1,7 @@
 <template>
   <div class="px-[16px] pt-[37px] pb-[92px]">
     <h1 class="text-[20px] font-bold mb-[40px]">
-      {{ t("heading", { count: coins.length * currentPage }) }}
+      {{ t("heading", { count: 100 * (currentPage - 1) + coins.length }) }}
     </h1>
     <CoinList />
   </div>
