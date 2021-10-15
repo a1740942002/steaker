@@ -1,0 +1,11 @@
+{
+  "heading": "總市值前 {count} 名的貨幣",
+  "name": "貨幣",
+  "current_price": "匯率",
+  "price_change_percentage_24h": "24小時",
+  "price_change_percentage_7d_in_currency": "7天",
+  "market_cap": "總市值",
+  "market_cap_change_24h": "24 小時交易量",
+  "sparkline_in_7d": "最近 7 天",
+  "network_error": "您的網路有點問題，請稍候再重新嘗試，謝謝。"
+}

@@ -2,27 +2,26 @@
   <header
     class="
       bg-dark
-      fixed
       min-h-[73px]
-      z-10
       w-full
+      sticky
+      top-0
+      z-50
       flex
       justify-between
       items-center
       px-[16px]
       py-[26px]
+      sm:py-[20px]
+      sm:px-[53px]
       border-b-[1px] border-white
     "
   >
-    <router-link to="/" class="w-[125px] h-[21px]">
-      <img src="../assets/steaker-logo.png" alt="" />
+    <router-link to="/">
+      <div class="block max-w-[125px] sm:min-w-[184px]">
+        <img class="object-fit" src="../assets/steaker-logo.png" alt="" />
+      </div>
     </router-link>
-    <div class="h-[34px] w-[71px] border-white rounded-[2px]">
-      <select class="bg-dark">
-        <option selected>EN</option>
-        <option>繁體</option>
-      </select>
-    </div>
+    <Switcher />
   </header>
 </template>
-

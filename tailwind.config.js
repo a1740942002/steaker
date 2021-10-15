@@ -8,6 +8,7 @@ module.exports = {
         sans: ['Helvetica', 'Arial', 'sans-serif'],
       },
       colors: {
+        brand: 'FF3233',
         blue: '#6188FF ',
         red: '#EA3943 ',
         green: '#16C784',

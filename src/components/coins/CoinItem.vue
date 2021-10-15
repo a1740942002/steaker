@@ -1,13 +1,27 @@
 <template>
-  <tr class="font-normal" :class="idx % 2 == 1 && 'bg-darkBlue'">
-    <td class="px-6 py-3">{{ coin.market_cap_rank }}</td>
-    <td class="px-6 py-3 text-left">
-      <div class="flex items-center min-w-[140px]">
+  <tr
+    v-if="!isCoinsLoading"
+    class="font-normal"
+    :class="idx % 2 == 1 && 'bg-darkBlue'"
+  >
+    <td
+      :class="idx % 2 == 1 && 'bg-darkBlue'"
+      class="sticky sm:static left-0 bg-dark pl-[10px] pr-6 py-3"
+    >
+      <div class="min-w-[24px]">
+        {{ coin.market_cap_rank || "#" }}
+      </div>
+    </td>
+    <td
+      :class="idx % 2 == 1 && 'bg-darkBlue'"
+      class="sticky sm:static left-[58px] bg-dark px-6 py-3 text-left"
+    >
+      <div class="flex items-center max-w-[140px]">
         <div class="w-[24px] h-[24px] rounded-full mr-[9px]">
           <img :src="coin.image" class="object-fit" />
         </div>
         <div>
-          <p class="font-bold">{{ id }}</p>
+          <p class="font-bold">{{ name }}</p>
           <span class="text-lightGrey-200 text-[12px]">{{ symbol }}</span>
         </div>
       </div>
@@ -17,7 +31,7 @@
       class="px-6 py-3"
       :class="priceChange24h > 0 ? 'text-green' : 'text-red'"
     >
-      <div class="flex items-center">
+      <div class="flex items-center justify-end">
         <ArrowUp v-if="priceChange24h > 0" color="#16C784" />
         <ArrowDown v-else color="#EA3943" />
         {{ priceChange24h < 0 ? -priceChange24h : priceChange24h }}%
@@ -27,20 +41,28 @@
       class="px-6 py-3"
       :class="priceChange7d > 0 ? 'text-green' : 'text-red'"
     >
-      <div class="flex items-center">
+      <div class="flex items-center justify-end">
         <ArrowUp v-if="priceChange7d > 0" color="#16C784" />
         <ArrowDown v-else color="#EA3943" />
         {{ priceChange7d < 0 ? -priceChange7d : priceChange7d }}%
       </div>
     </td>
     <td class="px-6 py-3">${{ marketCap }}</td>
-    <td class="px-6 py-3">${{ volume24h }}</td>
-    <td class="px-6 py-3">chartdasdsadasdas</td>
+    <td class="px-6 py-3 min-w-[150px]">${{ volume24h }}</td>
+    <td class="px-6 py-3">
+      <CoinChart
+        :priceChange7d="priceChange7d"
+        :sparkline_in_7d="coin.sparkline_in_7d.price"
+        :name="name"
+      />
+    </td>
   </tr>
+  <CoinsSkeleton v-else />
 </template>
 
 <script>
 import _ from "lodash";
+import { toRefs, computed, inject } from "vue";
 
 export default {
   props: {
@@ -51,37 +73,41 @@ export default {
       type: Number,
     },
   },
-  computed: {
-    id() {
-      return _.startCase(this.$props.coin.id);
-    },
-    symbol() {
-      return this.$props.coin.symbol.toUpperCase();
-    },
-    price() {
-      return this.$props.coin.current_price
-        .toString()
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    },
-    priceChange24h() {
-      return _.round(this.$props.coin.price_change_percentage_24h, 2);
-    },
-    priceChange7d() {
-      return _.round(
-        this.$props.coin.price_change_percentage_7d_in_currency,
-        2
-      );
-    },
-    marketCap() {
-      return this.$props.coin.market_cap
-        .toString()
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    },
-    volume24h() {
-      return this.$props.coin.market_cap_change_24h
+  setup(props) {
+    const isCoinsLoading = inject("isCoinsLoading");
+    const { coin, idx } = toRefs(props);
+    const name = computed(() => coin.value.name);
+    const symbol = computed(() => coin.value.symbol.toUpperCase());
+    const price = computed(() =>
+      coin.value.current_price?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    );
+    const priceChange24h = computed(() =>
+      _.round(coin.value.price_change_percentage_24h, 2)
+    );
+
+    const priceChange7d = computed(() =>
+      _.round(coin.value.price_change_percentage_7d_in_currency, 2)
+    );
+    const marketCap = computed(() =>
+      coin.value.market_cap?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    );
+    const volume24h = computed(() =>
+      coin.value.market_cap_change_24h
         ?.toString()
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    },
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    );
+
+    return {
+      idx,
+      name,
+      symbol,
+      price,
+      priceChange24h,
+      priceChange7d,
+      marketCap,
+      volume24h,
+      isCoinsLoading,
+    };
   },
 };
 </script>
