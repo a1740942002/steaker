@@ -2,8 +2,9 @@
   <tr
     @mouseover="isMouseOver = true"
     @mouseout="isMouseOver = false"
+    :class="isMouseOver && 'bg-darkBlue'"
     v-if="!isCoinsLoading"
-    class="font-normal hover:cursor-pointer hover:bg-darkBlue"
+    class="font-normal hover:cursor-pointer"
   >
     <td
       :class="isMouseOver && 'bg-darkBlue'"
