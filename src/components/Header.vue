@@ -20,8 +20,8 @@
     </router-link>
     <div class="border-white rounded-[2px]">
       <select class="bg-dark" :value="lang" @change="handleSelect">
-        <option selected value="en-us">EN</option>
-        <option value="zh-tw">繁體</option>
+        <option selected value="en-US">EN</option>
+        <option value="zh-TW">繁體</option>
       </select>
     </div>
   </header>

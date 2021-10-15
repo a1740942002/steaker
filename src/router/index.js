@@ -1,30 +1,29 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '@/views/Home.vue';
 import store from '@/store';
-import NProgress from 'nprogress';
 
 const routes = [
   {
-    path: '/zh-tw',
-    name: 'Home_zh-tw',
+    path: '/zh-TW',
+    name: 'Home_zh-TW',
     component: Home,
     beforeEnter: (to, from) => {
-      localStorage.setItem('lang', 'zh-tw');
-      store.dispatch('handleLang', 'zh-tw');
+      localStorage.setItem('lang', 'zh-TW');
+      store.dispatch('handleLang', 'zh-TW');
       const { i18n } = store.state;
-      i18n.locale = 'zh-tw';
+      i18n.locale = 'zh-TW';
       return true;
     },
   },
   {
-    path: '/en-us',
-    name: 'Home_en-us',
+    path: '/en-US',
+    name: 'Home_en-US',
     component: Home,
     beforeEnter: (to, from) => {
-      localStorage.setItem('lang', 'en-us');
-      store.dispatch('handleLang', 'en-us');
+      localStorage.setItem('lang', 'en-US');
+      store.dispatch('handleLang', 'en-US');
       const { i18n } = store.state;
-      i18n.locale = 'en-us';
+      i18n.locale = 'en-US';
       return true;
     },
   },
