@@ -29,13 +29,13 @@
         <div>
           <ArrowUp
             v-show="
-              selectedHeader.name == 'name' && selectedHeader.method == 'DESC'
+              selectedHeader.name == 'name' && selectedHeader.method == 'ASC'
             "
             color="#fff"
           />
           <ArrowDown
             v-show="
-              selectedHeader.name == 'name' && selectedHeader.method == 'ASC'
+              selectedHeader.name == 'name' && selectedHeader.method == 'DESC'
             "
             color="#fff"
           />
