@@ -4,7 +4,10 @@
     class="font-normal"
     :class="idx % 2 == 1 && 'bg-darkBlue'"
   >
-    <td class="sticky sm:static left-0 bg-dark pl-[10px] pr-6 py-3">
+    <td
+      :class="idx % 2 == 1 && 'bg-darkBlue'"
+      class="sticky sm:static left-0 bg-dark pl-[10px] pr-6 py-3"
+    >
       <div class="min-w-[24px]">
         {{ coin.market_cap_rank || "#" }}
       </div>
