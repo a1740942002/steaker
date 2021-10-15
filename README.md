@@ -4,7 +4,7 @@ author: Brian Lai
 
 This Project is for interviewing Steaker.
 
-![]('src/assets/preview.png')
+![]('https://raw.githubusercontent.com/a1740942002/steaker/composition-api/src/assets/preview.png')
 
 ### Stacks:
 
