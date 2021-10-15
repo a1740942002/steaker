@@ -6,7 +6,7 @@
     </main>
     <Footer />
   </n-notification-provider>
-  <NBackTop :show="isShowBackTop" />
+  <NBackTop :show="isShowBackTop" bottom="20" right="20" />
 </template>
 
 <script>
