@@ -84,10 +84,10 @@ export default {
       // 高於 1000 的，變成整數並使用 "," 千分位
       if (coin.value.current_price > 1000) {
         return parseInt(coin.value.current_price)
-          .toString()
+          ?.toString()
           .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       }
-      return coin.value?.current_price.toString();
+      return coin.value?.current_price?.toString();
     });
     const priceChange24h = computed(() =>
       _.round(coin.value?.price_change_percentage_24h, 2)
@@ -98,12 +98,12 @@ export default {
     );
     const marketCap = computed(() =>
       parseInt(coin.value?.market_cap)
-        .toString()
+        ?.toString()
         .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
     );
     const volume24h = computed(() =>
       parseInt(coin.value?.market_cap_change_24h)
-        .toString()
+        ?.toString()
         .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
     );
 
