@@ -2,10 +2,10 @@
   <tr
     v-if="!isCoinsLoading"
     class="font-normal"
-    :class="idx % 2 == 1 && 'bg-darkBlue'"
+    :class="idx % 2 == 1 && 'sm:bg-darkBlue'"
   >
     <td
-      :class="idx % 2 == 1 && 'bg-darkBlue'"
+      :class="idx % 2 == 1 && 'sm:bg-darkBlue'"
       class="sticky sm:static left-0 bg-dark pl-[10px] pr-6 py-3"
     >
       <div class="min-w-[24px]">
@@ -13,7 +13,7 @@
       </div>
     </td>
     <td
-      :class="idx % 2 == 1 && 'bg-darkBlue'"
+      :class="idx % 2 == 1 && 'sm:bg-darkBlue'"
       class="sticky sm:static left-[58px] bg-dark px-6 py-3 text-left"
     >
       <div class="flex items-center max-w-[140px]">

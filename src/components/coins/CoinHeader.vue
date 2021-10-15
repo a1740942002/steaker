@@ -1,5 +1,5 @@
 <template>
-  <tr>
+  <tr class="border-b-[1px] border-gray-800">
     <!-- Rank 特別拆出來是因為它是凍結窗格  -->
     <th
       @click="sortCoins('market_cap_rank')"

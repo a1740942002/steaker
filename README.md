@@ -10,7 +10,7 @@ See [DEMO](https://steaker-task.netlify.app/)
 > If you refresh the page too quickly, you will get a CORS error by the API provider ( not me! ).
 > It will cause pagination disappear, please wait for a minute and then refresh page again, and it will be fixed.
 
-![](src/assets/site_preview.png)
+![](src/assets/_preview.png)
 
 ### Stacks:
 
