@@ -1,5 +1,5 @@
 <template>
-  <div class="relative">
+  <div v-click-away="onClickAway" class="relative">
     <div
       class="
         relative
@@ -89,6 +89,10 @@ export default {
       isShowDropDown.value = false;
     };
 
+    const onClickAway = () => {
+      isShowDropDown.value = false;
+    };
+
     watch(
       () => store.state.lang,
       () => {
@@ -107,6 +111,7 @@ export default {
       notCurrentLangs,
       onClickCurrentLang,
       onClickNotCurrentLang,
+      onClickAway,
     };
   },
 };
