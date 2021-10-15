@@ -6,17 +6,37 @@
     </main>
     <Footer />
   </n-notification-provider>
+  <NBackTop :show="isShowBackTop" />
 </template>
 
 <script>
-import { NNotificationProvider } from "naive-ui";
+import { NNotificationProvider, NBackTop } from "naive-ui";
+import { useWindowScroll } from "@vueuse/core";
+
 export default {
   components: {
     NNotificationProvider,
+    NBackTop,
   },
   created() {
     // 初始化 i18n 在 vuex 中
     this.$store.dispatch("initI18n", this.$i18n);
+    // 取得滾軸位置
+    const { x, y } = useWindowScroll();
+    this.x = x;
+    this.y = y;
+  },
+  data() {
+    return {
+      x: null,
+      y: null,
+      isShowBackTop: true,
+    };
+  },
+  computed: {
+    isShowBackTop() {
+      return this.y > 100;
+    },
   },
 };
 </script>
@@ -47,5 +67,16 @@ export default {
 
 .n-base-icon.n-base-close svg {
   color: #fff;
+}
+
+/* 返回最上層 CSS */
+.n-back-top {
+  background-color: #171924 !important;
+}
+.n-base-icon {
+  color: #fff !important;
+}
+.n-base-icon:hover {
+  color: #ea7f84 !important;
 }
 </style>
