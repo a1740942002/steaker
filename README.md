@@ -1,8 +1,10 @@
 # Steaker Take-home Task
 
-author: Brian Lai
+- Author: Brian Lai
 
 This Project is for interviewing Steaker.
+
+See [DEMO](https://steaker-task.netlify.app/)
 
 ![](src/assets/preview.png)
 
