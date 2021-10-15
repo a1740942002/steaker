@@ -4,7 +4,9 @@ author: Brian Lai
 
 This Project is for interviewing Steaker.
 
-![]('./assets/preview.png')
+<p align="center">
+  <img src="./assets/preview.png" width="350" alt="accessibility text">
+</p>
 
 ### Stacks:
 
