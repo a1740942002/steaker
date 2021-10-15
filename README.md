@@ -1,7 +1,44 @@
-# Vue 3 + Vite
+# Steaker Take-home Task
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+author: Brian Lai
 
-## Recommended IDE Setup
+This Project is for interviewing Steaker.
 
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+[]('./assets/preview.png')
+
+### stacks:
+
+- vue
+- vite
+- vuex
+- vue-router
+- vue-i18n
+
+### other plugins:
+
+- axios
+- tailwindcss
+- nprogress
+- naive-ui
+- lodash
+- chart.js
+
+### Required Functions:
+
+- Header, Footer
+- Show Name, Price, 24hr changing, 7 days changing, market cap, and 24 hr volume of coins
+- coin table can be ordered by DESC or ASC
+- Pagination with router
+- Multilingual website with router and localStorage
+
+### Bonus Functions:
+
+- Freezing window effect of table header
+- Sparkline of 7 days price changing
+
+### Additional Functions:
+
+- Loading Skeleton
+- Loading Bar
+- Back to top
+- Error Notification

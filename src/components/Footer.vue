@@ -11,6 +11,8 @@
       text-[14px] text-center
     "
   >
-    <p>Proudly powered by Steaker © 2021 Steaker. All rights reserved.</p>
+    <p class="max-w-[220px] mx-auto sm:max-w-xl">
+      Proudly powered by Steaker © 2021 Steaker. All rights reserved.
+    </p>
   </footer>
 </template>
