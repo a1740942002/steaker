@@ -2,7 +2,7 @@
   <tr>
     <th
       @click="sortCoins('market_cap_rank')"
-      class="sticky left-0 bg-dark z-10 px-6 py-3 cursor-pointer"
+      class="sticky left-0 sm:static bg-dark z-10 px-6 py-3 cursor-pointer"
     >
       <coin-header-title :selectedHeader="selectedHeader" name="market_cap_rank"
         >#</coin-header-title
@@ -10,7 +10,17 @@
     </th>
     <th
       @click="sortCoins('name')"
-      class="sticky left-[57px] bg-dark z-10 px-6 py-3 text-left cursor-pointer"
+      class="
+        sticky
+        left-[57px]
+        sm:static
+        bg-dark
+        z-10
+        px-6
+        py-3
+        text-left
+        cursor-pointer
+      "
     >
       <div class="flex items-center">
         {{ t("name") }}
