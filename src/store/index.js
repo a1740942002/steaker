@@ -1,8 +1,14 @@
 import { createStore } from 'vuex';
 
+// 如果 localStorage 中不存在這兩個語系，把 localStorage 語系設定成英文
+// 這一段是為了防止使用者亂改 localStorage 語系導致的錯誤
+if (localStorage.getItem('lang') !== 'zh-TW' && localStorage.getItem('lang') !== 'en-US') {
+  localStorage.setItem('lang', 'en-US');
+}
+
 export default createStore({
   state: {
-    lang: localStorage.getItem('lang') || 'en-US',
+    lang: localStorage.getItem('lang'),
     i18n: null,
   },
   mutations: {
