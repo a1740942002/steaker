@@ -4,30 +4,30 @@ author: Brian Lai
 
 This Project is for interviewing Steaker.
 
-[]('./assets/preview.png')
+![]('./assets/preview.png')
 
-### stacks:
+### Stacks:
 
-- vue
-- vite
-- vuex
-- vue-router
-- vue-i18n
+- Vue 3
+- Vite
+- Vuex
+- Vue Router
+- Vue i18n
 
-### other plugins:
+### Other plugins:
 
-- axios
-- tailwindcss
-- nprogress
-- naive-ui
-- lodash
-- chart.js
+- Axios
+- Tailwindcss
+- Nprogress
+- Naive UI
+- Lodash
+- Chart.js
 
 ### Required Functions:
 
 - Header, Footer
 - Show Name, Price, 24hr changing, 7 days changing, market cap, and 24 hr volume of coins
-- coin table can be ordered by DESC or ASC
+- Coin table can be ordered by DESC or ASC
 - Pagination with router
 - Multilingual website with router and localStorage
 
