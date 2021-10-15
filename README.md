@@ -19,6 +19,7 @@ See [DEMO](https://steaker-task.netlify.app/)
 - Vuex
 - Vue Router
 - Vue i18n
+- Vue click away
 
 ### Other plugins:
 
