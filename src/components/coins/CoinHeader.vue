@@ -67,7 +67,14 @@
         {{ t("market_cap_change_24h") }}</coin-header-title
       >
     </th>
-    <th class="px-6 py-3">{{ t("last_7_days") }}</th>
+    <th @click="sortCoins('sparkline_in_7d')" class="px-6 py-3 cursor-pointer">
+      <coin-header-title
+        :selectedHeader="selectedHeader"
+        name="sparkline_in_7d"
+      >
+        {{ t("sparkline_in_7d") }}
+      </coin-header-title>
+    </th>
   </tr>
 </template>
 

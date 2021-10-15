@@ -84,7 +84,18 @@ export function useCoin() {
         }
       });
     }
-    // 除了 name 以外的，都是數字：
+    // 如果 property 為 sparkline_in_7d，等同於 price_change_percentage_7d_in_currency 的 sorting 方式
+    else if (property == 'sparkline_in_7d') {
+      property = 'price_change_percentage_7d_in_currency';
+      coins.value.sort((a, b) => {
+        if (selectedHeader.value.method == 'DESC') {
+          return b[property] - a[property];
+        } else {
+          return a[property] - b[property];
+        }
+      });
+    }
+    // 除了 name, last_7_days 以外的，都是數字：
     else {
       coins.value.sort((a, b) => {
         if (selectedHeader.value.method == 'DESC') {
