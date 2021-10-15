@@ -60,18 +60,18 @@ export function useCoin() {
     if (property == 'name') {
       coins.value.sort((a, b) => {
         if (selectedHeader.value.method == 'DESC') {
-          if (a[property] < b[property]) {
+          if (a[property] > b[property]) {
             return -1;
           }
-          if (a[property] > b[property]) {
+          if (a[property] < b[property]) {
             return 1;
           }
           return 0;
         } else {
-          if (a[property] > b[property]) {
+          if (a[property] < b[property]) {
             return -1;
           }
-          if (a[property] < b[property]) {
+          if (a[property] > b[property]) {
             return 1;
           }
           return 0;
