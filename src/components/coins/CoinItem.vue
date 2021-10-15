@@ -4,8 +4,13 @@
     class="font-normal"
     :class="idx % 2 == 1 && 'bg-darkBlue'"
   >
-    <td class="pl-[10px] pr-6 py-3">{{ coin.market_cap_rank }}</td>
-    <td class="px-6 py-3 text-left">
+    <td class="sticky left-0 bg-dark pl-[10px] pr-6 py-3">
+      {{ coin.market_cap_rank }}
+    </td>
+    <td
+      :class="idx % 2 == 1 && 'bg-darkBlue'"
+      class="sticky left-[57px] bg-dark px-6 py-3 text-left"
+    >
       <div class="flex items-center min-w-[160px]">
         <div class="w-[24px] h-[24px] rounded-full mr-[9px]">
           <img :src="coin.image" class="object-fit" />

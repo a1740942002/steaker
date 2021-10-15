@@ -19,10 +19,10 @@ export default {
   },
   setup(props) {
     const { name, priceChange7d, sparkline_in_7d } = toRefs(props);
-    const array = sparkline_in_7d.value;
+    const sparklines = sparkline_in_7d.value;
     onMounted(() => {
       const ctx = document.getElementById(name.value);
-      const labels = array.map(() => "");
+      const labels = sparklines.map(() => "");
       const data = {
         labels: labels,
         datasets: [
@@ -30,7 +30,7 @@ export default {
             backgroundColor: "#fff",
             borderColor: priceChange7d.value > 0 ? "#16C784" : "#EA3943",
             borderWidth: 1.5,
-            data: array,
+            data: sparklines,
             pointRadius: 0,
           },
         ],

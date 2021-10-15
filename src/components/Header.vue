@@ -6,7 +6,7 @@
       w-full
       sticky
       top-0
-      z-10
+      z-50
       flex
       justify-between
       items-center
