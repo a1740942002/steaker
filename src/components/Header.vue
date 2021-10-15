@@ -18,7 +18,7 @@
     <router-link to="/" class="w-[125px] h-[21px]">
       <img src="../assets/steaker-logo.png" alt="" />
     </router-link>
-    <div class="border-white rounded-[2px]">
+    <div class="border-white border-[1px] rounded-[2px]">
       <select class="bg-dark" :value="lang" @change="handleSelect">
         <option selected value="en-US">EN</option>
         <option value="zh-TW">繁體</option>
