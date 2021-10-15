@@ -6,7 +6,8 @@
     </main>
     <Footer />
   </n-notification-provider>
-  <NBackTop :show="isShowBackTop" bottom="20" right="20" />
+  <!-- 因為 Back to top 會報錯 ( computed is readonly ) 因此先移除 -->
+  <!-- <NBackTop :show="y > 100" bottom="20" right="20" /> -->
 </template>
 
 <script>
@@ -22,20 +23,10 @@ export default {
     // 初始化 i18n 在 vuex 中
     this.$store.dispatch("initI18n", this.$i18n);
     // 取得滾軸位置
-    const { x, y } = useWindowScroll();
-    this.x = x;
-    this.y = y;
   },
-  data() {
-    return {
-      x: null,
-      y: null,
-    };
-  },
-  computed: {
-    isShowBackTop() {
-      return this.y > 100;
-    },
+  setup() {
+    const { y } = useWindowScroll();
+    return { y };
   },
 };
 </script>

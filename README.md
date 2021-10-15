@@ -46,5 +46,4 @@ See [DEMO](https://steaker-task.netlify.app/)
 
 - Loading Skeleton
 - Loading Bar
-- Back to top
 - Error Notification
