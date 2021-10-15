@@ -49,12 +49,12 @@ export default {
 
 /* loading bar 的 CSS */
 #nprogress .bar {
-  background: #ea3943 !important;
+  background: #ff3233 !important;
 }
 #nprogress .spinner-icon {
   display: none;
-  border-top-color: #ea3943 !important;
-  border-left-color: #ea3943 !important;
+  border-top-color: #ff3233 !important;
+  border-left-color: #ff3233 !important;
 }
 
 /* 通知的 CSS */
@@ -77,6 +77,9 @@ export default {
   color: #fff !important;
 }
 .n-base-icon:hover {
-  color: #36ad6a !important;
+  color: #ff7d7d !important;
+}
+.n-base-icon:active {
+  color: #ff7d7d !important;
 }
 </style>
