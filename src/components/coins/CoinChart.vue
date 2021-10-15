@@ -1,5 +1,5 @@
 <template>
-  <canvas :id="name" width="200" height="100"></canvas>
+  <canvas :id="name" class="max-w-[200px] max-h-[60px]"></canvas>
 </template>
 
 <script>
@@ -13,22 +13,25 @@ export default {
     sparkline_in_7d: {
       type: Array,
     },
+    priceChange7d: {
+      type: Number,
+    },
   },
   setup(props) {
-    const { name, sparkline_in_7d } = toRefs(props);
+    const { name, priceChange7d, sparkline_in_7d } = toRefs(props);
     const array = sparkline_in_7d.value;
     onMounted(() => {
       const ctx = document.getElementById(name.value);
-      const labels = array.map((item) => "");
+      const labels = array.map(() => "");
       const data = {
         labels: labels,
         datasets: [
           {
-            label: "",
-            backgroundColor: "rgb(255, 99, 132)",
-            borderColor: "rgb(255, 99, 132)",
-            borderWidth: 0.01,
+            backgroundColor: "#fff",
+            borderColor: priceChange7d.value > 0 ? "#16C784" : "#EA3943",
+            borderWidth: 1.5,
             data: array,
+            pointRadius: 0,
           },
         ],
       };
@@ -46,10 +49,18 @@ export default {
               ticks: {
                 display: false,
               },
+              grid: {
+                display: false,
+                drawBorder: false,
+              },
             },
             y: {
               ticks: {
                 display: false,
+              },
+              grid: {
+                display: false,
+                drawBorder: false,
               },
             },
           },
