@@ -6,5 +6,6 @@
   "price_change_percentage_7d_in_currency": "7d%",
   "market_cap": "Market Cap",
   "market_cap_change_24h": "Volume(24h)",
-  "sparkline_in_7d": "Last 7 Days"
+  "sparkline_in_7d": "Last 7 Days",
+  "network_error": "Network Error ! Please try it again later, Thanks."
 }

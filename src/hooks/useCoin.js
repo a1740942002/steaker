@@ -3,29 +3,23 @@ import { coinApi } from '@/apis/coinApi.js';
 import { useRoute } from 'vue-router';
 
 export function useCoin() {
+  const route = useRoute();
   const coins = ref([]);
   const coinList = ref([]);
-  const route = useRoute();
   const currentPage = ref(parseInt(route.query.page) || 1);
   const isCoinsLoading = ref(false);
   const isCoinListLoading = ref(false);
-  const totalPage = computed(() => {
-    return Math.ceil(coinList.value.length / 100);
-  });
+  const totalPage = computed(() => Math.ceil(coinList.value.length / 100));
   const paginations = ref([1, 2, 3, 4, 5, '...', totalPage.value]);
   const selectedHeader = ref({
     name: 'market_cap',
     method: 'DESC',
   });
   const isFirstPage = computed(() => {
-    if (!route.query.hasOwnProperty('page')) {
-      return true;
-    }
+    if (!route.query.hasOwnProperty('page')) return true;
     return route.query.page == 1;
   });
-  const isLastPage = computed(() => {
-    return route.query.page == totalPage.value;
-  });
+  const isLastPage = computed(() => route.query.page == totalPage.value);
 
   const fetchCoins = async ({ page }) => {
     try {
