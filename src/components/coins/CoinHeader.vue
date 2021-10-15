@@ -1,5 +1,6 @@
 <template>
   <tr>
+    <!-- Rank 特別拆出來是因為它是凍結窗格  -->
     <th
       @click="sortCoins('market_cap_rank')"
       class="sticky left-0 sm:static bg-dark z-10 px-6 py-3 cursor-pointer"
@@ -8,6 +9,7 @@
         >#</coin-header-title
       >
     </th>
+    <!-- Name 特別拆出來是因為它對齊左邊 & 凍結窗格 -->
     <th
       @click="sortCoins('name')"
       class="
@@ -40,57 +42,11 @@
         </div>
       </div>
     </th>
-    <th @click="sortCoins('current_price')" class="px-6 py-3 cursor-pointer">
-      <coin-header-title
-        :selectedHeader="selectedHeader"
-        name="current_price"
-        >{{ t("current_price") }}</coin-header-title
-      >
-    </th>
-    <th
-      @click="sortCoins('price_change_percentage_24h')"
-      class="px-6 py-3 cursor-pointer"
-    >
-      <coin-header-title
-        :selectedHeader="selectedHeader"
-        name="price_change_percentage_24h"
-        >{{ t("price_change_percentage_24h") }}</coin-header-title
-      >
-    </th>
-    <th
-      @click="sortCoins('price_change_percentage_7d_in_currency')"
-      class="px-6 py-3 cursor-pointer"
-    >
-      <coin-header-title
-        :selectedHeader="selectedHeader"
-        name="price_change_percentage_7d_in_currency"
-        >{{ t("price_change_percentage_7d_in_currency") }}</coin-header-title
-      >
-    </th>
-    <th @click="sortCoins('market_cap')" class="px-6 py-3 cursor-pointer">
-      <coin-header-title :selectedHeader="selectedHeader" name="market_cap">
-        {{ t("market_cap") }}</coin-header-title
-      >
-    </th>
-    <th
-      @click="sortCoins('market_cap_change_24h')"
-      class="px-6 py-3 cursor-pointer"
-    >
-      <coin-header-title
-        :selectedHeader="selectedHeader"
-        name="market_cap_change_24h"
-      >
-        {{ t("market_cap_change_24h") }}</coin-header-title
-      >
-    </th>
-    <th @click="sortCoins('sparkline_in_7d')" class="px-6 py-3 cursor-pointer">
-      <coin-header-title
-        :selectedHeader="selectedHeader"
-        name="sparkline_in_7d"
-      >
-        {{ t("sparkline_in_7d") }}
-      </coin-header-title>
-    </th>
+    <CoinHeaderItem
+      v-for="coinHeader in coinHeaders"
+      :key="coinHeader.name"
+      :coinHeader="coinHeader"
+    />
   </tr>
 </template>
 
@@ -98,6 +54,28 @@
 import { useI18n } from "vue-i18n";
 import CoinHeaderTitle from "./CoinHeaderTitle.vue";
 import { inject } from "vue";
+
+const coinHeaders = [
+  {
+    name: "current_price",
+  },
+  {
+    name: "price_change_percentage_24h",
+  },
+  {
+    name: "price_change_percentage_7d_in_currency",
+  },
+  {
+    name: "market_cap",
+  },
+  {
+    name: "market_cap_change_24h",
+  },
+  {
+    name: "sparkline_in_7d",
+  },
+];
+
 export default {
   components: { CoinHeaderTitle },
   setup() {
@@ -105,7 +83,7 @@ export default {
     const selectedHeader = inject("selectedHeader");
     const { t } = useI18n();
 
-    return { sortCoins, selectedHeader, t };
+    return { sortCoins, selectedHeader, coinHeaders, t };
   },
 };
 </script>
