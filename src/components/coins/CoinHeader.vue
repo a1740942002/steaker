@@ -14,7 +14,7 @@
       @click="sortCoins('name')"
       class="
         sticky
-        left-[57px]
+        left-[58px]
         sm:static
         bg-dark
         z-10

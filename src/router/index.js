@@ -3,6 +3,7 @@ import Home from '@/views/Home.vue';
 import store from '@/store';
 
 const routes = [
+  { path: '/:pathMatch(.*)*', name: 'NotFound', component: Home },
   {
     path: '/zh-TW',
     name: 'Home_zh-TW',

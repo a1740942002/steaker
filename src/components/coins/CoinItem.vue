@@ -5,11 +5,13 @@
     :class="idx % 2 == 1 && 'bg-darkBlue'"
   >
     <td class="sticky sm:static left-0 bg-dark pl-[10px] pr-6 py-3">
-      {{ coin.market_cap_rank }}
+      <div class="min-w-[24px]">
+        {{ coin.market_cap_rank }}
+      </div>
     </td>
     <td
       :class="idx % 2 == 1 && 'bg-darkBlue'"
-      class="sticky sm:static left-[57px] bg-dark px-6 py-3 text-left"
+      class="sticky sm:static left-[58px] bg-dark px-6 py-3 text-left"
     >
       <div class="flex items-center max-w-[140px]">
         <div class="w-[24px] h-[24px] rounded-full mr-[9px]">
