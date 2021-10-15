@@ -1,11 +1,12 @@
 <template>
   <tr
+    @mouseover="isMouseOver = true"
+    @mouseout="isMouseOver = false"
     v-if="!isCoinsLoading"
-    class="font-normal"
-    :class="idx % 2 == 1 && 'bg-darkBlue'"
+    class="font-normal hover:cursor-pointer hover:bg-darkBlue"
   >
     <td
-      :class="idx % 2 == 1 && 'bg-darkBlue'"
+      :class="isMouseOver && 'bg-darkBlue'"
       class="sticky sm:static left-0 bg-dark pl-[10px] pr-6 py-3"
     >
       <div class="min-w-[24px]">
@@ -13,7 +14,7 @@
       </div>
     </td>
     <td
-      :class="idx % 2 == 1 && 'bg-darkBlue'"
+      :class="isMouseOver && 'bg-darkBlue'"
       class="sticky sm:static left-[58px] bg-dark px-6 py-3 text-left"
     >
       <div class="flex items-center max-w-[140px]">
@@ -62,7 +63,7 @@
 
 <script>
 import _ from "lodash";
-import { toRefs, computed, inject } from "vue";
+import { toRefs, computed, inject, ref } from "vue";
 
 export default {
   props: {
@@ -74,6 +75,7 @@ export default {
     },
   },
   setup(props) {
+    const isMouseOver = ref(false);
     const isCoinsLoading = inject("isCoinsLoading");
     const { coin, idx } = toRefs(props);
     const name = computed(() => coin.value.name);
@@ -115,6 +117,7 @@ export default {
       marketCap,
       volume24h,
       isCoinsLoading,
+      isMouseOver,
     };
   },
 };

@@ -1,10 +1,10 @@
 <template>
   <div class="max-w-[1280px] overflow-x-auto">
-    <table class="text-right text-[14px]">
+    <table class="text-right text-[14px border-b-[1px] border-gray-800">
       <thead>
         <CoinHeader />
       </thead>
-      <tbody>
+      <tbody class="divide-y divide-gray-800">
         <CoinItem
           v-for="(coin, idx) in coins"
           :idx="idx"
