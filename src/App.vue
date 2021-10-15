@@ -77,6 +77,6 @@ export default {
   color: #fff !important;
 }
 .n-base-icon:hover {
-  color: #ea7f84 !important;
+  color: #36ad6a !important;
 }
 </style>
