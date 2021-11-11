@@ -6,8 +6,7 @@
     </main>
     <Footer />
   </n-notification-provider>
-  <!-- 因為 Back to top 會報錯 ( computed is readonly ) 因此先移除 -->
-  <!-- <NBackTop :show="y > 100" bottom="20" right="20" /> -->
+  <NBackTop :show="y > 100" bottom="20" right="20" />
 </template>
 
 <script>
