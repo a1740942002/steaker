@@ -48,7 +48,8 @@ export function useCoin() {
   const sortCoins = (property) => {
     // 如果使用者點擊同一個 header，名稱不變，method 轉換
     if (selectedHeader.value.name == property) {
-      selectedHeader.value.method = selectedHeader.value.method == 'DESC' ? 'ASC' : 'DESC';
+      selectedHeader.value.method =
+        selectedHeader.value.method == 'DESC' ? 'ASC' : 'DESC';
     }
     //  如果使用者點擊不同 header，名稱取代，method 改成 DESC
     else {
@@ -107,6 +108,9 @@ export function useCoin() {
     () => {
       currentPage.value = parseInt(route.query.page) || 1;
       fetchCoins({ page: currentPage.value });
+      window.scrollTo({
+        top: 0,
+      });
     }
   );
 
