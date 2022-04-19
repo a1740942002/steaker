@@ -7,7 +7,7 @@
     </h1>
     <iframe
       class="mx-auto"
-      src="https://dev-09124-xy.web.app/"
+      src="https://internal-app-xy-finance.web.app/"
       width="375"
       height="600"
       frameborder="0"
