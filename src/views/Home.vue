@@ -9,7 +9,7 @@
       class="mx-auto"
       src="https://internal-app-xy-finance.web.app/"
       width="420"
-      height="666"
+      height="646"
       frameborder="0"
     ></iframe>
     <CoinList />
