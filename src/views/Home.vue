@@ -5,9 +5,21 @@
     <h1 class="text-[20px] font-bold">
       {{ t('heading', { count: 100 * (currentPage - 1) + coins.length }) }}
     </h1>
+    <h1>Internal:</h1>
     <iframe
       class="mx-auto"
       src="https://i.xy.finance/"
+      width="420"
+      height="646"
+      frameborder="0"
+    ></iframe>
+
+    <hr />
+
+    <h1>Produciton:</h1>
+    <iframe
+      class="mx-auto"
+      src="https://app.xy.finance/"
       width="420"
       height="646"
       frameborder="0"
